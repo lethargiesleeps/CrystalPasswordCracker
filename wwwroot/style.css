@@ -1,0 +1,35 @@
+/* GLOBAL */
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100&family=VT323&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-image: url('./bg');
+    background-repeat: no-repeat;
+    background-color: #fdf7bb;
+    font-family: 'VT323', monospace;
+    
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+}
+
+.inner-section {
+    background-color: #3d7bb8;
+    width: 80rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    
+}
+
+.title {
+    font-size: 1.5rem;
+    padding-top: 24rem;
+}
