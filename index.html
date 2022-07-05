@@ -9,30 +9,54 @@
         <link rel="stylesheet" href="./wwwroot/style.css" type="text/css">
         <title>Pokémon Crystal Password Cracker</title>
     </head>
-    
+
     <body>
         <div class="section">
-            <div class="inner-section">
-                <h1 class="title">Pokémon Crystal Password Cracker</h1>
-                <h2 class="subtitle">What Is It?</h2>
-                <p class="description">Blah blah blah</p>
-                <h2 class="subtitle">How To Use It?</h2>
-                <p class="description">blah blah blah</p>
-            </div>
+            <h1 class="title">Password Cracker</h1>
         </div>
 
-        <div class="section">
-            <div class="inner-section">
-                <form class="password-form">
-                    <label for="name-box">Trainer Name: </label>
-                    <input type="text" name="name-box" id="trainerName">
-                    <label for="id-box">Trainer ID: </label>
-                    <input type="number" name="id-box" id="trainerId">
-                    <label for="money-box">Current Money: </label>
-                    <input type="number" name="money-box" id="trainerCash">
-
-                </form>
+        <div class="content">
+            <div class="main-form">
+                <label for="trainer-name">Trainer Name: </label>
+                <input type="text" name="trainer-name" id="trainerName">
+                <label for="trainer-id">Trainer ID: </label>
+                <input type="number" name="trainer-id" id="trainerId" maxlength="5">
+                <label for="trainer-cash">Money In Wallet: </label>
+                <input type="number" name="trainer-cash" id="trainerCash" maxlength="6">
+                <button onclick="clickTheButton()" class="button-class">Crack Password!</button>
             </div>
+            <h2 class="result">RESULT: <span id="result"></span></h2>
+            <h2 class="subtitle">What Is It?</h2>
+            <p class="body-text">
+                Pokémon Crystal added a lot of new features to the already great Silver and Gold versions. However one feature that didn't change so nicely was resetting the in-game clock.
+                What was normally an easy to accomplish thing now required players to due some pretty obscure mathematics to obtain a 'Password'.
+                To do this, players would have to cross reference a chart to convert the characters into numbers, calculate remainders of Trainer IDs and wallet amounts from some foreign value,
+                and do some benign addition and subtraction to obtain the final result. These calculations wouldn't work with scientific calculators so you would have to due all the division by hand.
+                This tool aims at simplifying this whole process, it just requires the player's name, trainer id, and wallet amount to due all the boring calculations for you.
+            </p>
+            <h2 class="subtitle">How To Use It?</h2>
+            <p class="body-text">
+                <ol>
+                    <li>Get into your Pokémon Crystal save file. Platform doesn't matter (GBC, Emulator, VC).</li>
+                    <li>Open up the start menu, and navigate to your Trainer Card.</li>
+                    <li>Take note of your Trainer Name (capitalization matters).</li>
+                    <li>Take note of your Trainer ID.</li>
+                    <li>Take note of your current amount of Cash (don't worry about your savings with your mom).</li>
+                    <li>Save and exit!</li>
+                    <li>Boot up the game again.</li>
+                    <li>At the title screen, hold DOWN, SELECT, B.</li>
+                    <li>While still holding SELECT, let go of DOWN and B.</li>
+                    <li>Press and hold UP and LEFT.</li>
+                    <li>Let go of SELECT.</li>
+                    <li>This might take a couple tries, just keep trying.</li>
+                    <li>If you succeed, it'll ask you if you want to change the time. Select 'YES'.</li>
+                    <li>Provide the form above your Trainer Name, Trainer ID, and Money.</li>
+                    <li>Click 'Generate Password', enter the result into your game.</li>
+                </ol>
+            </p>
+            
         </div>
+
+        <script src="./index.js"></script>
     </body>
 </html>

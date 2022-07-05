@@ -1,35 +1,82 @@
 /* GLOBAL */
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 * {
     margin: 0;
     padding: 0;
 }
+
 body {
-    background-image: url('./bg');
+    background-image: url('./bg2.png');
     background-repeat: no-repeat;
-    background-color: #fdf7bb;
-    font-family: 'VT323', monospace;
-    
+    background-color: black;
+    background-position-x: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0px 6rem;
+}
+
+ol{
+    padding-left: 2.5rem;
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
 }
 
 .section {
-    display: flex;
-    justify-content: center;
+    text-align: center;
 }
 
-.inner-section {
-    background-color: #3d7bb8;
-    width: 80rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+.content {
     color: white;
+    background-color: #8828b0;
+    padding: 1rem 8rem 1rem 1.5rem;
+    border-radius: 0.1rem;
     
 }
 
+.main-form {
+    padding-right: 80%;
+}
+
+.main-form input {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+}
+
+.main-form label {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.body-text {
+    font-size: 0.8;
+    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1rem;
+}
+
+.result{
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    font-size: 1rem;
+}
+
+.button-class {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0.25rem;
+    font-size: 1rem;
+}
 .title {
-    font-size: 1.5rem;
-    padding-top: 24rem;
+    font-size: 3rem;
+    padding-top: 16rem;
+    margin-top: 0.5rem;
+    margin-bottom: 8rem;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
 }
