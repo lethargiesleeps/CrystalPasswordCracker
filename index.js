@@ -23,74 +23,97 @@ function clickTheButton() {
         nameTotal += getCharValue(name[index]);
     }
 
-    let cashTotal = (cash / 256) + (cash % 256);
-    cashTotal = cashTotal.toFixed();
-
-    let idTotal = (id / 256) + (cash % 256);
-    idTotal = idTotal.toFixed();
-
+    
+    let cashQuotient = Number(cash) / 256;
+    let cashModulo = Number(cash) % 256;
+    let cashTotal = Math.trunc(cashQuotient) + cashModulo;
+    
+    let idQuotient = Number(id) / 256;
+    let idModulo = Number(id) % 256;
+    let idTotal = Math.trunc(idQuotient) + idModulo;
+    
     let finalValue = Number(nameTotal) + Number(cashTotal) + Number(idTotal);
     finalValue = finalValue.toString();
     cleanLog(finalValue, "test conversion");
 
     let passWord = ["", "", "", "", ""];
     let numberOfDigits = finalValue.length;
-    switch (numberOfDigits) {
-        case 0:
-            passWord[0] = "0";
-            passWord[1] = "0";
-            passWord[2] = "0";
-            passWord[3] = "0";
-            passWord[4] = "0";
-            break;
-        case 1:
-            passWord[0] = "0";
-            passWord[1] = "0";
-            passWord[2] = "0";
-            passWord[3] = "0";
-            passWord[4] = finalValue[0];
-        case 2:
-            passWord[0] = "0";
-            passWord[1] = "0";
-            passWord[2] = "0";
-            passWord[3] = finalValue[0];
-            passWord[4] = finalValue[1];
-            break;
-        case 3:
-            passWord[0] = "0";
-            passWord[1] = "0";
-            passWord[2] = finalValue[0];
-            passWord[3] = finalValue[1];
-            passWord[4] = finalValue[2];
-            break;
-        case 4:
-            passWord[0] = "0";
-            passWord[1] = finalValue[0];
-            passWord[2] = finalValue[1];
-            passWord[3] = finalValue[2];
-            passWord[4] = finalValue[3];
-            break;
-        case 5:
-            passWord[0] = finalValue[0];
-            passWord[1] = finalValue[1];
-            passWord[2] = finalValue[2];
-            passWord[3] = finalValue[3];
-            passWord[4] = finalValue[4];
-            break;
-        default:
-            passWord[0] = finalValue[0];
-            passWord[1] = finalValue[1];
-            passWord[2] = finalValue[2];
-            passWord[3] = finalValue[3];
-            passWord[4] = finalValue[4];
-            break;
+    const values = [nameTotal, cashTotal, idTotal];
+
+    //Validation
+    let validInfo = true;
+    if (name === "" || id === "" || cash === "") validInfo = false;
+    if (nameTotal === NaN || nameTotal === 0) validInfo = false;
+
+    for (let index = 0; index < values.length; index++) {
+
+        if(values[index] === NaN || values[index] === null) {
+            validInfo = false;
+        }
     }
 
-    for (let index = 0; index < passWord.length; index++) {
-        document.getElementById('result').innerHTML += passWord[index];
+    if(validInfo) {
+
+        switch (numberOfDigits) {
+            case 0:
+                passWord[0] = "0";
+                passWord[1] = "0";
+                passWord[2] = "0";
+                passWord[3] = "0";
+                passWord[4] = "0";
+                break;
+            case 1:
+                passWord[0] = "0";
+                passWord[1] = "0";
+                passWord[2] = "0";
+                passWord[3] = "0";
+                passWord[4] = finalValue[0];
+            case 2:
+                passWord[0] = "0";
+                passWord[1] = "0";
+                passWord[2] = "0";
+                passWord[3] = finalValue[0];
+                passWord[4] = finalValue[1];
+                break;
+            case 3:
+                passWord[0] = "0";
+                passWord[1] = "0";
+                passWord[2] = finalValue[0];
+                passWord[3] = finalValue[1];
+                passWord[4] = finalValue[2];
+                break;
+            case 4:
+                passWord[0] = "0";
+                passWord[1] = finalValue[0];
+                passWord[2] = finalValue[1];
+                passWord[3] = finalValue[2];
+                passWord[4] = finalValue[3];
+                break;
+            case 5:
+                passWord[0] = finalValue[0];
+                passWord[1] = finalValue[1];
+                passWord[2] = finalValue[2];
+                passWord[3] = finalValue[3];
+                passWord[4] = finalValue[4];
+                break;
+            default:
+                passWord[0] = finalValue[0];
+                passWord[1] = finalValue[1];
+                passWord[2] = finalValue[2];
+                passWord[3] = finalValue[3];
+                passWord[4] = finalValue[4];
+                break;
+        }
+    
+        for (let index = 0; index < passWord.length; index++) {
+            document.getElementById('result').innerHTML += passWord[index];
+        }
+    }
+    else {
+        document.getElementById('result').innerHTML = "Something went wrong. Please try again.";
     }
     
-    //Debug logs
+    // Debug logs
     cleanLog(name, "trainer name");
     cleanLog(id, "trainer id");
     cleanLog(cash, "trainer cash");
@@ -99,22 +122,17 @@ function clickTheButton() {
     cleanLog(idTotal, "id value");
     cleanLog(finalValue, "password");
     cleanLog(numberOfDigits, "number of digits");
-    for (let index = 0; index < finalValue.length; index++) {
-        cleanLog(finalValue[index], "pass");
-    }
+    
     
 }
+
 
 function cleanLog(value, name = "") {
     let upperCase = name.toUpperCase();
     console.log(upperCase + ": " + value)
 }
 
-/**
- * Returns a number bassed on the character passed as an argument.
- * @param {*} character Character passed that determines return value.
- * @returns Corresponding number based on given characters.
- */
+
 function getCharValue(character) {
 
     switch (character) {
@@ -260,4 +278,14 @@ function getCharValue(character) {
         default:
             return 0;
     }
+}
+
+function invalidateNumericInput() {
+    var userStr = document.getElementById('trainerName').value;
+    if(userStr.match(/\d/)){
+        userStr = userStr.replace(/\d+/g,"");
+        alert("No numbers in Trainer Name.");
+        document.getElementById('trainerName').value = "";
+    }
+    console.log(userStr);
 }

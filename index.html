@@ -18,11 +18,11 @@
         <div class="content">
             <div class="main-form">
                 <label for="trainer-name">Trainer Name: </label>
-                <input type="text" name="trainer-name" id="trainerName">
+                <input type="text" name="trainer-name" id="trainerName"  onkeyup="invalidateNumericInput()">
                 <label for="trainer-id">Trainer ID: </label>
-                <input type="number" name="trainer-id" id="trainerId" maxlength="5">
+                <input type="number" name="trainer-id" id="trainerId" maxlength="5" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                 <label for="trainer-cash">Money In Wallet: </label>
-                <input type="number" name="trainer-cash" id="trainerCash" maxlength="6">
+                <input type="number" name="trainer-cash" id="trainerCash" maxlength="7" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                 <button onclick="clickTheButton()" class="button-class">Crack Password!</button>
             </div>
             <h2 class="result">RESULT: <span id="result"></span></h2>
